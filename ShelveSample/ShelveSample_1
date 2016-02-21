@@ -10,4 +10,9 @@ db.close()
 mydb = shelve.open(shelve_name)
 for key in mydb:
     print(key, "=> ", mydb[key])
+
+mydb["age"] = "52"
+for key in mydb:
+    print(key, "=> ", mydb[key])
+
 mydb.close()

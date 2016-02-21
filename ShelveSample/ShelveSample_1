@@ -1,0 +1,13 @@
+import shelve
+
+shelve_name = "shelve-sample"
+
+db = shelve.open(shelve_name)
+db["name"] = "Bob"
+db["age"] = "42"
+db.close()
+
+mydb = shelve.open(shelve_name)
+for key in mydb:
+    print(key, "=> ", mydb[key])
+mydb.close()

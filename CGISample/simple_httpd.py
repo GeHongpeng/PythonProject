@@ -2,7 +2,7 @@ import os, sys
 from http.server import HTTPServer, CGIHTTPRequestHandler
 
 webdir = "."
-port = 8088
+port = 8081
 
 os.chdir(webdir)
 srvraddr = ("", port)

@@ -31,9 +31,7 @@ while True:
 
     cv2.imshow('Video', img)
 
-    key = cv2.waitKey(1)
-
-    if key == ord('q'):
+    if cv2.waitKey(1) == ord('q'):
         break
 
 cap.release()

@@ -5,7 +5,8 @@ import cv2
 
 def detect(img, cascade):
     rects = cascade.detectMultiScale(
-        img, scaleFactor=1.3,
+        img, 
+        scaleFactor=1.3,
         minNeighbors=5, 
         minSize=(30,30), 
         flags=cv2.cv.CV_HAAR_SCALE_IMAGE)

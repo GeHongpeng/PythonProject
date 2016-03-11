@@ -23,6 +23,9 @@ def draw_circle(event,x,y,flags,param):
         ix,iy = x,y
     elif event == cv2.EVENT_MOUSEMOVE and flags == cv2.EVENT_FLAG_LBUTTON:
         if drawing == True:
+            # Reset img
+            img = np.zeros((512,512,3),np.uint8)
+            
             if mode == True:
                 cv2.rectangle(img, (ix, iy), (x, y), (0, 255, 0), -1)
             else:

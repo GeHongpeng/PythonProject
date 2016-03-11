@@ -14,6 +14,9 @@ Press 'm' to change mode
 mode = True
 ix,iy = -1,-1
 
+img = np.zeros((512,512,3),np.uint8)
+cv2.namedWindow('image')
+
 # Callback Function
 def draw_circle(event,x,y,flags,param):
     global ix, iy, drawing, mode
@@ -43,8 +46,6 @@ def draw_circle(event,x,y,flags,param):
         #    r=int(np.sqrt((x-ix)**2+(y-iy)**2))
         #    cv2.circle(img,(x,y),r,(0,0,255),-1)
 
-img = np.zeros((512,512,3),np.uint8)
-cv2.namedWindow('image')
 cv2.setMouseCallback('image',draw_circle)
 
 while(1):

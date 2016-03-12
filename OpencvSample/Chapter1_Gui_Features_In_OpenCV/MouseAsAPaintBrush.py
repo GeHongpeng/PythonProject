@@ -8,7 +8,7 @@ print(events)
 
 # mouse callback function
 def draw_circle(event,x,y,flags,param):
-    if event == cv2.EVENT_LBUTTONDBLCLK:
+    if event == cv2.EVENT_LBUTTONDBLCLK:# for mac you should change the value
         cv2.circle(img, (x, y), 100, (0, 255, 0), -1)
 
 # Create a black image, a window and bind the function to window

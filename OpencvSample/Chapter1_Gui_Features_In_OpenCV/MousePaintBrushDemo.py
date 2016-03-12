@@ -27,13 +27,13 @@ def draw_circle(event,x,y,flags,param):
     elif event == cv2.EVENT_MOUSEMOVE and flags == cv2.EVENT_FLAG_LBUTTON:
         if drawing == True:
             # Reset img
-            img = np.zeros((512,512,3),np.uint8)
-            
+            img[:] = (0, 0, 0)
+
             if mode == True:
                 cv2.rectangle(img, (ix, iy), (x, y), (0, 255, 0), -1)
             else:
                 #cv2.circle(img,(x,y),3,(0,0,255),2)
-                
+
                 r = int(np.sqrt((x - ix) ** 2 + (y - iy) ** 2))
                 cv2.circle(img, (x, y), r, (0, 0, 255), -1)
     # left-button up, draw the rectangle or circle

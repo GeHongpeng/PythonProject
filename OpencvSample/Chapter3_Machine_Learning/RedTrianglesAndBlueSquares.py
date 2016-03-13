@@ -18,4 +18,17 @@ plt.scatter(x=red[:, 0], y=red[:, 1], s=80, c='r', marker='^')
 blue = trainData[responses.ravel() == 1]
 plt.scatter(x=blue[:, 0], y=blue[:, 1], s=80, c='b', marker='s')
 
+# Create a newcomer
+newcomer = np.random.randint(0, 100, (1, 2)).astype(np.float32)
+plt.scatter(x=newcomer[:, 0], y=newcomer[:, 1], s=80, c='g', marker='o')
+
+knn = cv2.KNearest()
+knn.train(trainData, responses)
+ret, results, neighbours, dist = knn.find_nearest(newcomer, 5)
+
+print "result: ", results, "\n"
+print "neighbours: ", neighbours, "\n"
+print "distance: ", dist
+
 plt.show()
+

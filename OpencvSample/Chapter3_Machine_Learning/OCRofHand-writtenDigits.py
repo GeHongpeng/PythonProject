@@ -3,6 +3,7 @@
 import numpy as np
 import cv2
 from matplotlib import pyplot as plt
+
 img = cv2.imread('./data/digits.png')
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
@@ -32,3 +33,13 @@ matches = result == test_labels
 correct = np.count_nonzero(matches)
 accuracy = correct * 100.0 / result.size
 print accuracy
+
+# It would be better to convert the data to np.uint8 first and then save it.
+# Then while loading, you can convert back into float32
+np.savez('./data/knn_data.npz', train=train.astype(np.uint8), train_labels=train_labels)
+
+# Now load the data
+with np.load('./data/knn_data.npz') as data:
+    print data.files
+    train = data['train'].astype(np.float32)
+    train_labels = data['train_labels']

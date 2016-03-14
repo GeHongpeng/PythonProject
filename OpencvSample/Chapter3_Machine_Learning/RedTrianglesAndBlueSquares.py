@@ -31,4 +31,3 @@ print "neighbours: ", neighbours, "\n"
 print "distance: ", dist
 
 plt.show()
-

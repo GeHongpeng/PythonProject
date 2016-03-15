@@ -24,18 +24,20 @@ while not len(fail_array) == 0:
     knn.train(trainData, responses)
     ret, result, neighbours, dist = knn.find_nearest(testData, k=5)
 
-    # Find failed pattern
+    # Calculate failed pattern
     tmp_array = result == labels
     fail_array = testData[tmp_array.ravel() == False]
     fail_labels = labels[tmp_array.ravel() == False]
 
-    correct = np.count_nonzero(result == labels)
-    accuracy = correct * 100.0 / 10000
-    print '#%d  fail data num:%d  accuracy:%.2f%%' % (cal_num, len(fail_array), accuracy)
-
-    #
+    # Add to trainData
     trainData = np.vstack((trainData, fail_array))
     responses = np.vstack((responses, fail_labels))
+
+    # Output result
+    correct = np.count_nonzero(result == labels)
+    accuracy = correct * 100.0 / result.size
+    print '#%d  fail data num:%d  accuracy:%.2f%%' % (cal_num, len(fail_array), accuracy)
+
     cal_num += 1
 
 """

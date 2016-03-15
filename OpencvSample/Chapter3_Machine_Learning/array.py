@@ -1,5 +1,5 @@
 # _*_ coding= utf-8 _*_
-
+#一维 数组可以被索引、切片和迭代
 import numpy as np
 
 a = np.arange(10) ** 3

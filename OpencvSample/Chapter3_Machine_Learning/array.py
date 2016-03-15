@@ -71,3 +71,13 @@ print np.vstack((a[:, np.newaxis], b[:, np.newaxis]))  # The behavior of vstack 
 # 对那些维度比二维更高的数组， hstack 沿着第二个轴组合， vstack 沿着第一个轴组合, concatenate 允许可选参数给出组合时沿着的轴。
 
 print np.r_[1:4, 0, 4]
+
+
+# 将一个数组分割(split)成几个小数组
+# 使用 hsplit 你能将数组沿着它的水平轴分割，或者指定返回相同形状数组的个数，或者指定在哪些列后发生分割:
+a = np.floor(10 * np.random.random((2, 12)))
+print a
+print np.array(np.hsplit(a, 3))
+
+# Split a after the third and the fourth column
+print np.hsplit(a, (3, 4))

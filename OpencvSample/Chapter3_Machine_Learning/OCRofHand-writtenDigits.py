@@ -51,10 +51,10 @@ while not len(fail_array) == 0:
 """
 # It would be better to convert the data to np.uint8 first and then save it.
 # Then while loading, you can convert back into float32
-np.savez('./data/knn_data.npz', trainData=trainData.astype(np.uint8), train_labels=train_labels)
+np.savez('./data/digits_knn_data.npz', trainData=trainData.astype(np.uint8), train_labels=train_labels)
 
 # Now load the data
-with np.load('./data/knn_data.npz') as data:
+with np.load('./data/digits_knn_data.npz') as data:
     print data.files
     train = data['trainData'].astype(np.float32)
     train_labels = data['train_labels']

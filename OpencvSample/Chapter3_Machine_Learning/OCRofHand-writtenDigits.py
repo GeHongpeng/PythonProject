@@ -14,32 +14,48 @@ cells = [np.hsplit(row, 100) for row in np.vsplit(gray, 50)]
 x = np.array(cells)
 
 # Now we prepare train_data and test_data.
-train = x[:, :50].reshape(-1, 400).astype(np.float32)  # Size = (2500,400)
-test = x[:, 50:100].reshape(-1, 400).astype(np.float32)  # Size = (2500,400)
+trainData = x[:, :50].reshape(-1, 400).astype(np.float32)  # Size = (2500,400)
+testData = x[:, 50:100].reshape(-1, 400).astype(np.float32)  # Size = (2500,400)
 
 # Create labels for train and test data
 k = np.arange(10)
 train_labels = np.repeat(k, 250)[:, np.newaxis]
 test_labels = train_labels.copy()
 
-# Initiate kNN, train the data, then test it with test data for k=1
-knn = cv2.KNearest()
-knn.train(train, train_labels)
-ret, result, neighbours, dist = knn.find_nearest(test, k=5)
+#
+fail_array = testData
+cal_num = 1
+while not len(fail_array) == 0:
+    # Initiate kNN, train the data, then test it with test data for k=1
+    knn = cv2.KNearest()
+    knn.train(trainData, train_labels)
+    ret, result, neighbours, dist = knn.find_nearest(testData, k=5)
 
-# Now we check the accuracy of classification
-# For that, compare the result with test_labels and check which are wrong
-matches = result == test_labels
-correct = np.count_nonzero(matches)
-accuracy = correct * 100.0 / result.size
-print accuracy
+    # Find failed pattern
+    tmp_array = result == test_labels
+    fail_array = testData[tmp_array.ravel() == False]
+    fail_labels = test_labels[tmp_array.ravel() == False]
 
+    # Add to trainData
+    trainData = np.vstack((trainData, fail_array))
+    train_labels = np.vstack((train_labels, fail_labels))
+
+    # Now we check the accuracy of classification
+    # For that, compare the result with test_labels and check which are wrong
+    correct = np.count_nonzero(result == test_labels)
+    accuracy = correct * 100.0 / result.size
+    print '#%d  fail data num:%d  accuracy:%.2f%%' % (cal_num, len(fail_array), accuracy)
+
+    cal_num += 1
+
+"""
 # It would be better to convert the data to np.uint8 first and then save it.
 # Then while loading, you can convert back into float32
-np.savez('./data/knn_data.npz', train=train.astype(np.uint8), train_labels=train_labels)
+np.savez('./data/knn_data.npz', trainData=trainData.astype(np.uint8), train_labels=train_labels)
 
 # Now load the data
 with np.load('./data/knn_data.npz') as data:
     print data.files
-    train = data['train'].astype(np.float32)
+    train = data['trainData'].astype(np.float32)
     train_labels = data['train_labels']
+"""

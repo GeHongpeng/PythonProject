@@ -31,6 +31,7 @@ print b[1:3, :]  # equivalent to the previous example
 print b[-1]  # the last row. Equivalent to b[-1,:]
 
 # 更改数组的形状
+# 如果在改变形状操作中一个维度被给做-1，其维度将自动被计算
 a = np.floor(10 * np.random.random((3, 4)))
 print a
 print a.shape
@@ -39,3 +40,34 @@ print a.ravel()  # flatten the array
 a.shape = (6, 2)
 print a
 print a.transpose()  # Permute the dimensions of an array
+
+
+# 组合(stack)不同的数组
+# 几种方法可以沿不同轴将数组堆叠在一起：
+a = np.floor(10 * np.random.random((2, 2)))
+print a
+
+b = np.floor(10 * np.random.random((2, 2)))
+print b
+
+print np.vstack((a, b))
+print np.hstack((a, b))
+
+# 函数 column_stack 以列将一维数组合成二维数组，它等同与 vstack 对一维数组。
+print np.column_stack((a, b)), '\n'
+
+
+a = np.array([1., 2.])
+b = np.array([3., 4.])
+print a
+print b
+
+print a[:, np.newaxis]  # This allows to have a 2D columns vector
+print b[:, np.newaxis]
+
+print np.column_stack((a[:, np.newaxis], b[:, np.newaxis]))
+print np.vstack((a[:, np.newaxis], b[:, np.newaxis]))  # The behavior of vstack is different
+
+# 对那些维度比二维更高的数组， hstack 沿着第二个轴组合， vstack 沿着第一个轴组合, concatenate 允许可选参数给出组合时沿着的轴。
+
+print np.r_[1:4, 0, 4]

@@ -42,11 +42,11 @@ while not len(fail_array) == 0:
 
 """
 # Save trainData and responses
-np.savez('./data/letters_knn_data.npz', trainData=trainData, responses=responses)
+np.savez('./data/letters_knn_data.npz', trainData=trainData.astype(np.uint8), responses=responses)
 
 # Now load the data
 with np.load('./data/letters_knn_data.npz') as knn_data:
     print knn_data.files
-    train = knn_data['trainData']
+    train = knn_data['trainData'].astype(np.float32)
     train_labels = knn_data['responses']
 """

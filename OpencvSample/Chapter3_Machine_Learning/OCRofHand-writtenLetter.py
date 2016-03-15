@@ -42,6 +42,8 @@ while not len(fail_array) == 0:
 
 """
 # Save trainData and responses
+# It would be better to convert the data to np.uint8 first and then save it.
+# Then while loading, you can convert back into float32
 np.savez('./data/letters_knn_data.npz', trainData=trainData.astype(np.uint8), responses=responses)
 
 # Now load the data

@@ -24,7 +24,7 @@ while not len(fail_array) == 0:
     knn.train(trainData, responses)
     ret, result, neighbours, dist = knn.find_nearest(testData, k=5)
 
-    # Calculate failed pattern
+    # Find failed pattern
     tmp_array = result == labels
     fail_array = testData[tmp_array.ravel() == False]
     fail_labels = labels[tmp_array.ravel() == False]

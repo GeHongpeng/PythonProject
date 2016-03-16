@@ -8,6 +8,7 @@ img = cv2.imread('./data/digits.png')
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 # Now we split the image to 5000 cells, each 20x20 size
+# cells is a list
 cells = [np.hsplit(row, 100) for row in np.vsplit(gray, 50)]
 
 # Make it into a Numpy array. It size will be (50,100,20,20)

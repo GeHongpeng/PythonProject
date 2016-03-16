@@ -45,7 +45,7 @@ while not len(fail_array) == 0:
     # For that, compare the result with test_labels and check which are wrong
     correct = np.count_nonzero(result == test_labels)
     accuracy = correct * 100.0 / result.size
-    print '#%d  fail data num:%d  accuracy:%.2f%%' % (cal_num, len(fail_array), accuracy)
+    print '#%d  failed data num:%d  accuracy:%.2f%%' % (cal_num, len(fail_array), accuracy)
 
     cal_num += 1
 

@@ -29,8 +29,9 @@ cascade = cv2.CascadeClassifier(cascade_fn)
 
 while True:
     ret, img = cap.read()
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    rects = detect(img, cascade)
+    rects = detect(gray, cascade)
     draw_rects(img, rects, (0, 255, 0))
 
     cv2.imshow('Video', img)

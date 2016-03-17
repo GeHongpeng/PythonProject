@@ -8,7 +8,7 @@ import numpy as np
 在计算HOG 前我们使用图片的二阶矩对其进行抗扭斜（deskew）处理
 """
 
-SZ=20
+SZ = 20
 bin_n = 16 # Number of bins
 
 svm_params = dict(kernel_type=cv2.SVM_LINEAR,

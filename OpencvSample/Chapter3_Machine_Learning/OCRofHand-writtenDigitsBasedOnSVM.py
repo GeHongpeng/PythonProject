@@ -89,7 +89,7 @@ while not len(fail_array) == 0:
     ######     Now training     ########################
     svm = cv2.SVM()
     svm.train(trainData,responses, params=svm_params)
-    svm.save('./data/svm_data.dat')
+    #svm.save('./data/svm_data.dat')
 
     ######     Now training     ########################
     result = svm.predict_all(testData)

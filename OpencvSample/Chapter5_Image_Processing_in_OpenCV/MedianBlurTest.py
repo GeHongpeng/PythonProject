@@ -17,7 +17,7 @@ def salt(img, n):
 
 img = cv2.imread("./data/sample.png", 0)
 result = salt(img, 500)
-median = cv2.medianBlur(result, 5)
+median = cv2.medianBlur(result, 3)
 
 
 cv2.imshow("Salt", result)

@@ -36,7 +36,12 @@ def hog(img):
     # gx: InputArray=img, ddepth=cv2.CV_32F, xorder=1, yorder=0
     # gy: InputArray=img, ddepth=cv2.CV_32F, xorder=0, yorder=1
     # ddepth: 图像的深度，-1表示采用的是与原图像相同的深度。目标图像的深度必须大于等于原图像的深度；
-    # dx和dy表示的是求导的阶数，0表示这个方向上没有求导，一般为0、1、2。
+    # dx和dy表示的是求导的阶数，0表示这个方向上没有求导，一般为0、1、2
+    # dst不用解释了；
+    # ksize是Sobel算子的大小，必须为1、3、5、7。
+    # scale是缩放导数的比例常数，默认情况下没有伸缩系数；
+    # delta是一个可选的增量，将会加到最终的dst中，同样，默认情况下没有额外的值加到dst中；
+    # borderType是判断图像边界的模式。这个参数默认值为cv2.BORDER_DEFAULT。
     gx = cv2.Sobel(img, cv2.CV_32F, 1, 0)  # 求X方向导数   用Scharr导数，来求特征量效果更好。
     gy = cv2.Sobel(img, cv2.CV_32F, 0, 1)  # 求Y方向导数
 

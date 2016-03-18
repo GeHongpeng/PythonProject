@@ -77,7 +77,7 @@ hogdata = [map(hog, row) for row in deskewed]
 trainData = np.float32(hogdata).reshape(-1, bin_n*4)
 responses = np.float32(np.repeat(np.arange(10), 250)[:, np.newaxis])
 
-######     Now testing      ########################
+######     Create testing data     ########################
 deskewed = [map(deskew, row) for row in test_cells]
 hogdata = [map(hog, row) for row in deskewed]
 testData = np.float32(hogdata).reshape(-1, bin_n*4)

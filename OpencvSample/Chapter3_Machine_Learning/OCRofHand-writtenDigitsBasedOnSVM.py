@@ -35,6 +35,8 @@ def hog(img):
     # void Sobel(InputArray src, OutputArray dst, int ddepth, int xorder, int yorder, int ksize=3, double scale=1, double delta=0, int borderType=BORDER_DEFAULT )
     # gx: InputArray=img, ddepth=cv2.CV_32F, xorder=1, yorder=0
     # gy: InputArray=img, ddepth=cv2.CV_32F, xorder=0, yorder=1
+    # ddepth: 图像的深度，-1表示采用的是与原图像相同的深度。目标图像的深度必须大于等于原图像的深度；
+    # dx和dy表示的是求导的阶数，0表示这个方向上没有求导，一般为0、1、2。
     gx = cv2.Sobel(img, cv2.CV_32F, 1, 0)  # 求X方向导数   用Scharr导数，来求特征量效果更好。
     gy = cv2.Sobel(img, cv2.CV_32F, 0, 1)  # 求Y方向导数
 

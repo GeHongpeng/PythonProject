@@ -22,6 +22,9 @@ result = img
 tmp_Blur = cv2.blur(result, (3, 3))
 tmp_GaussianBlur = cv2.GaussianBlur(result, (3, 3), 0)
 tmp_median = cv2.medianBlur(result, 3)
+
+#9---滤波领域直径
+#后面两个数字：空间高斯函数标准差，灰度值相似性标准差
 tmp_bilateralBlur = cv2.bilateralFilter(result, 9, 21, 21)
 
 cv2.imshow("Origin", img)

@@ -51,9 +51,10 @@ blur = cv2.blur(img, (5, 5))
 
 plt.subplot(121), plt.imshow(img), plt.title('Original')
 plt.xticks([]), plt.yticks([])
-plt.subplot(122), plt.imshow(blur), plt.title('Blurred')
+plt.subplot(122), plt.imshow(blur), plt.title('Averaging Filtering')
 plt.xticks([]), plt.yticks([])
 plt.show()
+
 
 """
 2. Gaussian Filtering
@@ -87,6 +88,71 @@ blur = cv2.GaussianBlur(img, (5, 5), 0)
 
 plt.subplot(121), plt.imshow(img), plt.title('Original')
 plt.xticks([]), plt.yticks([])
-plt.subplot(122), plt.imshow(blur), plt.title('Gaussian blurring')
+plt.subplot(122), plt.imshow(blur), plt.title('Gaussian Filtering')
+plt.xticks([]), plt.yticks([])
+plt.show()
+
+
+"""
+3. Median Filtering
+medianBlur(src, ksize[, dst]) → dst
+Parameters:
+src – input 1-, 3-, or 4-channel image; when ksize is 3 or 5, the image depth should be CV_8U, CV_16U,
+      or CV_32F, for larger aperture sizes, it can only be CV_8U.
+dst – destination array of the same size and type as src.
+ksize – aperture linear size; it must be odd and greater than 1, for example: 3, 5, 7 ...
+
+"""
+def salt(img, n):
+    for k in range(n):
+        i = int(np.random.random() * img.shape[1])
+        j = int(np.random.random() * img.shape[0])
+        if img.ndim == 2:
+            img[j, i] = 255
+        elif img.ndim == 3:
+            img[j, i, 0] = 255
+            img[j, i, 1] = 255
+            img[j, i, 2] = 255
+    return img
+
+img = cv2.imread('./data/logo.png')
+salt_img = salt(img, 500)
+
+median = cv2.medianBlur(salt_img, 5)
+
+plt.subplot(121), plt.imshow(salt_img), plt.title('Original')
+plt.xticks([]), plt.yticks([])
+plt.subplot(122), plt.imshow(median), plt.title('Median Filtering')
+plt.xticks([]), plt.yticks([])
+plt.show()
+
+
+"""
+4. Bilateral Filtering
+bilateralFilter(src, d, sigmaColor, sigmaSpace[, dst[, borderType]]) → dst
+Parameters:
+src – Source 8-bit or floating-point, 1-channel or 3-channel image.
+dst – Destination image of the same size and type as src .
+d – Diameter of each pixel neighborhood that is used during filtering.
+    If it is non-positive, it is computed from sigmaSpace .
+sigmaColor – Filter sigma in the color space. A larger value of the parameter means that
+             farther colors within the pixel neighborhood (see sigmaSpace ) will be mixed together,
+             resulting in larger areas of semi-equal color.
+sigmaSpace – Filter sigma in the coordinate space. A larger value of the parameter means that farther
+             pixels will influence each other as long as their colors are close enough
+             (see sigmaColor). When d>0 , it specifies the neighborhood size regardless of sigmaSpace.
+             Otherwise, d is proportional to sigmaSpace .
+
+"""
+img = cv2.imread('./data/logo.png')
+
+bilateralFilter = cv2.bilateralFilter(img, 9, 75, 75)
+adaptiveBilateralFilter = cv2.adaptiveBilateralFilter(img, (9, 9), 75, 75)
+
+plt.subplot(131), plt.imshow(img), plt.title('Original')
+plt.xticks([]), plt.yticks([])
+plt.subplot(132), plt.imshow(bilateralFilter), plt.title('Bilateral Filtering')
+plt.xticks([]), plt.yticks([])
+plt.subplot(133), plt.imshow(adaptiveBilateralFilter), plt.title('Ada Bilateral Filtering')
 plt.xticks([]), plt.yticks([])
 plt.show()

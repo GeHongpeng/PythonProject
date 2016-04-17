@@ -1,6 +1,7 @@
 # _*_ coding= utf-8 _*_
 import cv2
 import numpy as np
+import glob
 from random import randint
 
 """
@@ -50,40 +51,56 @@ layer_sizes = np.int32([3, 10, 4])
 animal_net = cv2.ANN_MLP()
 animal_net.create(layer_sizes)
 
-# Load param
+# Load parameter
 # animal_net.load('./data/mlp.xml')
 
 # Set criteria and parameters
-criteria = (cv2.TERM_CRITERIA_COUNT | cv2.TERM_CRITERIA_EPS, 100, 0.001)
+criteria = (cv2.TERM_CRITERIA_COUNT | cv2.TERM_CRITERIA_EPS, 500, 0.0001)
 params = dict(term_crit=criteria,
               train_method=cv2.ANN_MLP_TRAIN_PARAMS_BACKPROP,
-              bp_dw_scale=0.1,
+              bp_dw_scale=0.001,
               bp_moment_scale=0.1)
 
-# Create array for train data and label
+# Create arrays for train data and response
 train_array = np.zeros((1, 3))
-label_array = np.zeros((1, 4), 'float')
+train_resp_array = np.zeros((1, 4), 'float')
 
+# Load train data from files
+training_data = glob.glob('./data/train_*.npz')
+for single_npz in training_data:
+    with np.load(single_npz) as data:
+        print data.files
+        train_temp = data['train_data']
+        train_resp_temp = data['train_resp']
+
+    #
+    train_array = np.vstack((train_array, train_temp))
+    train_resp_array = np.vstack((train_resp_array, train_resp_temp))
+
+"""
 # Create train data
-records = []
-RECORDS = 5000
-for x in range(0, RECORDS):
+TRAIN_RECORDS = 250
+for x in range(0, TRAIN_RECORDS):
 
     train_array = np.vstack((train_array, dog_sample()))
-    label_array = np.vstack((label_array, dog_class()))
+    train_resp_array = np.vstack((train_resp_array, dog_class()))
 
     train_array = np.vstack((train_array, condor_sample()))
-    label_array = np.vstack((label_array, condor_class()))
+    train_resp_array = np.vstack((train_resp_array, condor_class()))
 
     train_array = np.vstack((train_array, dolphin_sample()))
-    label_array = np.vstack((label_array, dolphin_class()))
+    train_resp_array = np.vstack((train_resp_array, dolphin_class()))
 
     train_array = np.vstack((train_array, dragon_sample()))
-    label_array = np.vstack((label_array, dragon_class()))
+    train_resp_array = np.vstack((train_resp_array, dragon_class()))
+"""
 
 # Set train data for training
 train_data = train_array[1:, :]
-train_resp = label_array[1:, :]
+train_resp = train_resp_array[1:, :]
+
+# save training data as a numpy file
+# np.savez('./data/train_data.npz', train_data=train_data, train_resp=train_resp)
 
 # Start training
 animal_net.train(train_data, train_resp, None, params=params)
@@ -91,33 +108,56 @@ animal_net.train(train_data, train_resp, None, params=params)
 # Save param
 # animal_net.save('./data/mlp.xml')
 
-# Get accuray
-dog_results = 0
-condor_results = 0
-dolphin_results = 0
-dragon_results = 0
-for x in range(0, 100):
-    dog_ret, dog_resp = animal_net.predict(np.array([dog_sample()], dtype=np.float32))
-    dog_prediction = dog_resp.argmax(-1)
-    if dog_prediction == 0:
-        dog_results += 1
+# Create arrays for test data and label
+test_array = np.zeros((1, 3))
+test_resp_array = np.zeros((1, 4), 'float')
 
-    condor_ret, condor_resp = animal_net.predict(np.array([condor_sample()], dtype=np.float32))
-    condor_prediction = condor_resp.argmax(-1)
-    if condor_prediction == 1:
-        condor_results += 1
+# Load test data from files
+testing_data = glob.glob('./data/test_*.npz')
+for single_npz in testing_data:
+    with np.load(single_npz) as data:
+        print data.files
+        test_temp = data['test_data']
+        test_resp_temp = data['test_resp']
 
-    dolphin_ret, dolphin_resp = animal_net.predict(np.array([dolphin_sample()], dtype=np.float32))
-    dolphin_prediction = dolphin_resp.argmax(-1)
-    if dolphin_prediction == 2:
-        dolphin_results += 1
+    #
+    test_array = np.vstack((test_array, test_temp))
+    test_resp_array = np.vstack((test_resp_array, test_resp_temp))
 
-    dragon_ret, dragon_resp = animal_net.predict(np.array([dragon_sample()], dtype=np.float32))
-    dragon_prediction = dragon_resp.argmax(-1)
-    if dragon_prediction == 3:
-        dragon_results += 1
+"""
+# Create test data
+TEST_RECORDS = 250
+for x in range(0, TEST_RECORDS):
 
-print "Dog accuracy: %f" % dog_results
-print "Condor accuracy: %f" % condor_results
-print "Dolphin accuracy: %f" % dolphin_results
-print "Dragon accuracy: %f" % dragon_results
+    test_array = np.vstack((test_array, dog_sample()))
+    test_resp_array = np.vstack((test_resp_array, dog_class()))
+
+    test_array = np.vstack((test_array, condor_sample()))
+    test_resp_array = np.vstack((test_resp_array, condor_class()))
+
+    test_array = np.vstack((test_array, dolphin_sample()))
+    test_resp_array = np.vstack((test_resp_array, dolphin_class()))
+
+    test_array = np.vstack((test_array, dragon_sample()))
+    test_resp_array = np.vstack((test_resp_array, dragon_class()))
+"""
+
+test_data = test_array[1:, :]
+test_resp = test_resp_array[1:, :]
+
+# save training data as a numpy file
+# np.savez('./data/test_data.npz', test_data=test_data, test_resp=test_resp)
+
+# Calculate accuray
+ret, resp = animal_net.predict(test_data)
+prediction = resp.argmax(-1)
+#print 'Prediction:', prediction
+
+true_resp = test_resp.argmax(-1)
+#print 'True response:', true_resp
+
+num_correct = np.sum(true_resp == prediction)
+print 'Correct number: %d' % num_correct
+
+test_rate = np.mean(prediction == true_resp)
+print 'Test rate: %f' % (test_rate * 100)

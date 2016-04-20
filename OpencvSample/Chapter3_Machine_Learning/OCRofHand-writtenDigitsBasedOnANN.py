@@ -7,15 +7,15 @@ from random import randint
 # Output of the Neural network
 DIGIT = np.array(
     [[1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1]], dtype=np.float32
+     [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+     [0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+     [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+     [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+     [0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+     [0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+     [0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+     [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+     [0, 0, 0, 0, 0, 0, 0, 0, 0, 1]], dtype=np.float32
 )
 
 print 'Loading training data...'
@@ -49,7 +49,7 @@ e00 = cv2.getTickCount()
 time0 = (e00 - e0) / cv2.getTickFrequency()
 print 'Loading data duration: %.3fs' % time0
 
-# set start time
+# Set start time
 e1 = cv2.getTickCount()
 
 # Create MLP
@@ -60,7 +60,7 @@ digit_net.create(layer_sizes)
 print 'Neural network layer: ', layer_sizes
 
 # Load parameter
-# animal_net.load('./data/mlp.xml')
+#digit_net.load('./data/xml/mlp.xml')
 
 # Set criteria and parameters
 criteria = (cv2.TERM_CRITERIA_COUNT | cv2.TERM_CRITERIA_EPS, 1000, 0.0001)
@@ -69,18 +69,17 @@ params = dict(term_crit=criteria,
               bp_dw_scale=0.001,
               bp_moment_scale=0.1)
 
-print 'Training MLP ...'
-
 # Start training
+print 'Training MLP ...'
 digit_net.train(trainData, train_labels, None, params=params)
 
-# set end time
+# Set end time
 e2 = cv2.getTickCount()
 time = (e2 - e1) / cv2.getTickFrequency()
 print 'Training duration: %.3fs' % time
 
 # Save param
-# animal_net.save('./data/mlp.xml')
+#digit_net.save('./data/xml/mlp.xml')
 
 # Start testing
 print 'Testing...'

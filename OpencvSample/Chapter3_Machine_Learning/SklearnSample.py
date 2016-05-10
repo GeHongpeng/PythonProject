@@ -13,7 +13,7 @@ print 'Start training'
 e0 = cv2.getTickCount()
 
 clf = svm.SVC()
-clf.fit(training_data[0][:1000], training_data[1][:1000])
+clf.fit(training_data[0], training_data[1])
 
 print 'End training'
 e00 = cv2.getTickCount()

@@ -23,7 +23,6 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-
 class SettingFromImageDialog(QtGui.QDialog):
     def __init__(self):
         super(SettingFromImageDialog, self).__init__()
@@ -43,8 +42,7 @@ class SettingFromImageDialog(QtGui.QDialog):
 
         self.pixMapItem = QtGui.QGraphicsPixmapItem(QtGui.QPixmap(self.local_image), None, self.local_scene)
         self.ImageGraphicsView.setScene(self.local_scene)
-        #self.pixMapItem.mousePressEvent = self.pixelSelect
-
+        # self.pixMapItem.mousePressEvent = self.pixelSelect
 
         self.horizontalLayoutWidget = QtGui.QWidget(SettingDialog)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(10, 10, 651, 41))
@@ -58,11 +56,9 @@ class SettingFromImageDialog(QtGui.QDialog):
         self.lineEdit = QtGui.QLineEdit(self.horizontalLayoutWidget)
         self.lineEdit.setObjectName(_fromUtf8("lineEdit"))
         self.horizontalLayout.addWidget(self.lineEdit)
-
         self.ImageLoadPushButton = QtGui.QPushButton(self.horizontalLayoutWidget)
         self.ImageLoadPushButton.setObjectName(_fromUtf8("ImageLoadPushButton"))
         self.horizontalLayout.addWidget(self.ImageLoadPushButton)
-
         self.PointsYGroupBox = QtGui.QGroupBox(SettingDialog)
         self.PointsYGroupBox.setGeometry(QtCore.QRect(1090, 60, 101, 191))
         self.PointsYGroupBox.setObjectName(_fromUtf8("PointsYGroupBox"))
@@ -124,7 +120,7 @@ class SettingFromImageDialog(QtGui.QDialog):
         self.LeftBottomXLineEdit.setObjectName(_fromUtf8("LeftBottomXLineEdit"))
         self.PointXVerticalLayout.addWidget(self.LeftBottomXLineEdit)
         self.horizontalLayoutWidget_2 = QtGui.QWidget(SettingDialog)
-        self.horizontalLayoutWidget_2.setGeometry(QtCore.QRect(940, 300, 160, 41))
+        self.horizontalLayoutWidget_2.setGeometry(QtCore.QRect(900, 320, 239, 41))
         self.horizontalLayoutWidget_2.setObjectName(_fromUtf8("horizontalLayoutWidget_2"))
         self.horizontalLayout_2 = QtGui.QHBoxLayout(self.horizontalLayoutWidget_2)
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
@@ -134,6 +130,9 @@ class SettingFromImageDialog(QtGui.QDialog):
         self.CancelPushButton = QtGui.QPushButton(self.horizontalLayoutWidget_2)
         self.CancelPushButton.setObjectName(_fromUtf8("CancelPushButton"))
         self.horizontalLayout_2.addWidget(self.CancelPushButton)
+        self.ResetPushButton = QtGui.QPushButton(SettingDialog)
+        self.ResetPushButton.setGeometry(QtCore.QRect(980, 270, 75, 31))
+        self.ResetPushButton.setObjectName(_fromUtf8("ResetPushButton"))
 
         self.retranslateUi(SettingDialog)
         QtCore.QMetaObject.connectSlotsByName(SettingDialog)
@@ -156,6 +155,7 @@ class SettingFromImageDialog(QtGui.QDialog):
         self.PointsXGroupBox.setTitle(_translate("SettingDialog", "X", None))
         self.OKPushButton.setText(_translate("SettingDialog", "OK", None))
         self.CancelPushButton.setText(_translate("SettingDialog", "Cancel", None))
+        self.ResetPushButton.setText(_translate("SettingDialog", "Reset", None))
 
         self.ImageLoadPushButton.clicked.connect(self.imagefileLoad)
 

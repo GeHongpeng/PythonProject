@@ -186,14 +186,13 @@ class ImageTransformation(QtGui.QMainWindow):
         self.TargetPathLabel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.TargetPathLabel.setObjectName(_fromUtf8("TargetPathLabel"))
         self.horizontalLayout.addWidget(self.TargetPathLabel)
-
-
         self.TargetPathLineEdit = QtGui.QLineEdit(self.horizontalLayoutWidget)
         self.TargetPathLineEdit.setMaximumSize(QtCore.QSize(16777215, 20))
         self.TargetPathLineEdit.setObjectName(_fromUtf8("TargetPathLineEdit"))
         self.horizontalLayout.addWidget(self.TargetPathLineEdit)
-
-
+        self.DirectoryPushButton = QtGui.QPushButton(self.horizontalLayoutWidget)
+        self.DirectoryPushButton.setObjectName(_fromUtf8("DirectoryPushButton"))
+        self.horizontalLayout.addWidget(self.DirectoryPushButton)
         self.horizontalLayoutWidget_2 = QtGui.QWidget(self.centralwidget)
         self.horizontalLayoutWidget_2.setGeometry(QtCore.QRect(320, 400, 160, 51))
         self.horizontalLayoutWidget_2.setObjectName(_fromUtf8("horizontalLayoutWidget_2"))
@@ -243,11 +242,13 @@ class ImageTransformation(QtGui.QMainWindow):
         self.TargetSettingPushButton.setText(_translate("MainWindow", "Setting from image", None))
         self.TargetGroupBox_2.setTitle(_translate("MainWindow", "Target files", None))
         self.TargetPathLabel.setText(_translate("MainWindow", "Path:", None))
+        self.DirectoryPushButton.setText(_translate("MainWindow", "Directory", None))
         self.RunPushButton.setText(_translate("MainWindow", "Run", None))
         self.CancelPushButton.setText(_translate("MainWindow", "Cancel", None))
 
         self.BaseSettingPushButton.clicked.connect(self.baseSettingPushButtonOnClick)
         self.TargetSettingPushButton.clicked.connect(self.baseSettingPushButtonOnClick)
+        self.DirectoryPushButton.clicked.connect(self.directoryButtonOnClick)
         self.RunPushButton.clicked.connect(self.runButtonOnClick)
 
     def baseSettingPushButtonOnClick(self):
@@ -292,9 +293,11 @@ class ImageTransformation(QtGui.QMainWindow):
             self.TargetLeftBottomXLineEdit.setText(self.settingImageDialog.LeftBottomXLineEdit.text())
             self.TargetLeftBottomYLineEdit.setText(self.settingImageDialog.LeftBottomYLineEdit.text())
 
+    def directoryButtonOnClick(self):
+        self.TargetPathLineEdit.setText(QtGui.QFileDialog.getExistingDirectory(self, "Select Directory"))
+
     def runButtonOnClick(self):
-        file = QtGui.QFileDialog.getExistingDirectory(self, "Select Directory")
-        print file
+        print "runButtonOnClick"
 
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)

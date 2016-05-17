@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import os
 from PyQt4 import QtCore, QtGui
 
 try:
@@ -20,12 +21,24 @@ except AttributeError:
 class SettingFromImageDialog(QtGui.QDialog):
     def __init__(self):
         super(SettingFromImageDialog, self).__init__()
+
+        #
+        self.LEFTTOP = 0
+        self.RIGHTTOP = 1
+        self.RIGHTBOTTOM = 2
+        self.LEFTBOTTOM = 3
+
+        #
+        self.counterFlag = self.LEFTTOP
+
+        #
         self.setupUi(self)
 
     def setupUi(self, SettingDialog):
         SettingDialog.setObjectName(_fromUtf8("SettingDialog"))
         SettingDialog.resize(1211, 643)
 
+        # Create Graphic View component
         self.ImageGraphicsView = QtGui.QGraphicsView(SettingDialog)
         self.ImageGraphicsView.setGeometry(QtCore.QRect(10, 60, 811, 561))
         self.ImageGraphicsView.setObjectName(_fromUtf8("ImageGraphicsView"))
@@ -131,12 +144,14 @@ class SettingFromImageDialog(QtGui.QDialog):
         self.retranslateUi(SettingDialog)
         QtCore.QMetaObject.connectSlotsByName(SettingDialog)
 
-        self.show()
+        #
+        #self.show()
 
     def retranslateUi(self, SettingDialog):
         # 禁止拉伸窗口大小
         SettingDialog.setFixedSize(SettingDialog.width(), SettingDialog.height())
 
+        # Set property
         SettingDialog.setWindowTitle(_translate("SettingDialog", "Setting from image", None))
         self.BaseImageLabel.setText(_translate("SettingDialog", "Base image file path", None))
         self.ImageLoadPushButton.setText(_translate("SettingDialog", "Load", None))
@@ -151,16 +166,71 @@ class SettingFromImageDialog(QtGui.QDialog):
         self.CancelPushButton.setText(_translate("SettingDialog", "Cancel", None))
         self.ResetPushButton.setText(_translate("SettingDialog", "Reset", None))
 
+        # Load PushButton event
         self.ImageLoadPushButton.clicked.connect(self.imagefileLoad)
 
+        # OK PushButton event
+        self.OKPushButton.clicked.connect(SettingDialog.accept)
+
+        # Cancel PushButton event
+        self.CancelPushButton.clicked.connect(self.cancelPushButtonClick)
+
+        # Reset PushButton event
+        self.ResetPushButton.clicked.connect(self.coordinatesReset)
+
     def pixelSelect(self, event):
-        position = QtCore.QPoint(event.pos().x(), event.pos().y())
-        print "x={0} y={1}".format(position.x(), position.y())
+        #position = QtCore.QPoint(event.pos().x(), event.pos().y())
+
+        if self.counterFlag == self.LEFTTOP:
+            self.LeftTopXLineEdit.setText('{0}'.format(event.pos().x()))
+            self.LeftTopYLineEdit.setText('{0}'.format(event.pos().y()))
+            self.counterFlag += 1
+        elif self.counterFlag == self.RIGHTTOP:
+            self.RightTopXLineEdit.setText('{0}'.format(event.pos().x()))
+            self.RightTopYLineEdit.setText('{0}'.format(event.pos().y()))
+            self.counterFlag += 1
+        elif self.counterFlag == self.RIGHTBOTTOM:
+            self.RightBottomXLineEdit.setText('{0}'.format(event.pos().x()))
+            self.RightBottomYLineEdit.setText('{0}'.format(event.pos().y()))
+            self.counterFlag += 1
+        elif self.counterFlag == self.LEFTBOTTOM:
+            self.LeftBottomXLineEdit.setText('{0}'.format(event.pos().x()))
+            self.LeftBottomYLineEdit.setText('{0}'.format(event.pos().y()))
+            self.counterFlag += 1
 
     def imagefileLoad(self):
+
+        #
+        filename = QtGui.QFileDialog.getOpenFileName(self, 'Open file', os.path.expanduser('~') + '/Desktop')
+        self.lineEdit.setText(filename)
+        
+        #
         self.local_image = QtGui.QImage(self.lineEdit.text())
         self.pixMapItem = QtGui.QGraphicsPixmapItem(QtGui.QPixmap(self.local_image), None, self.local_scene)
+        
+        #
         self.pixMapItem.mousePressEvent = self.pixelSelect
+
+    def coordinatesReset(self):
+        #
+        self.counterFlag = self.LEFTTOP
+
+        # Left Top
+        self.LeftTopXLineEdit.setText('0')
+        self.LeftTopYLineEdit.setText('0')
+        # Right Top
+        self.RightTopXLineEdit.setText('0')
+        self.RightTopYLineEdit.setText('0')
+        # Right Bottom
+        self.RightBottomXLineEdit.setText('0')
+        self.RightBottomYLineEdit.setText('0')
+        # Left Bottom
+        self.LeftBottomXLineEdit.setText('0')
+        self.LeftBottomYLineEdit.setText('0')
+
+    def cancelPushButtonClick(self):
+        self.coordinatesReset()
+        self.reject()
 
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)

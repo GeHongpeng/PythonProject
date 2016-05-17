@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'MyPyQtTest.ui'
-#
-# Created by: PyQt4 UI code generator 4.11.4
-#
-# WARNING! All changes made in this file will be lost!
-
 import sys
+import cv2
+import os
+import glob
+import numpy as np
 from PyQt4 import QtCore, QtGui
 from SettingFromImageDialog import SettingFromImageDialog
 
@@ -31,6 +29,8 @@ class ImageTransformation(QtGui.QMainWindow):
         #
         self.settingImageDialog = None
         self.settingFlag = ''
+        self.targetrows = 0
+        self.targetcols = 0
 
         #
         self.setupUi(self)
@@ -286,6 +286,10 @@ class ImageTransformation(QtGui.QMainWindow):
 
             self.BaseLeftBottomXLineEdit.setText(self.settingImageDialog.LeftBottomXLineEdit.text())
             self.BaseLeftBottomYLineEdit.setText(self.settingImageDialog.LeftBottomYLineEdit.text())
+
+            self.targetrows = self.settingImageDialog.rows
+            self.targetcols = self.settingImageDialog.cols
+
         elif self.settingFlag == 'Target':
             self.TargetLeftTopXLineEdit.setText(self.settingImageDialog.LeftTopXLineEdit.text())
             self.TargetLeftTopYLineEdit.setText(self.settingImageDialog.LeftTopYLineEdit.text())
@@ -303,7 +307,35 @@ class ImageTransformation(QtGui.QMainWindow):
         self.TargetPathLineEdit.setText(QtGui.QFileDialog.getExistingDirectory(self, "Select Directory"))
 
     def runButtonOnClick(self):
-        print "runButtonOnClick"
+
+        #
+        targetPoint = np.float32([[self.TargetLeftTopXLineEdit.text(), self.TargetLeftTopYLineEdit.text()],
+                                  [self.TargetRightTopXLineEdit.text(), self.TargetRightTopYLineEdit.text()],
+                                  [self.TargetRightBottomXLineEdit.text(), self.TargetRightBottomYLineEdit.text()],
+                                  [self.TargetLeftBottomXLineEdit.text(), self.TargetLeftBottomYLineEdit.text()]])
+        basePoint = np.float32([[self.BaseLeftTopXLineEdit.text(), self.BaseLeftTopYLineEdit.text()],
+                                [self.BaseRightTopXLineEdit.text(), self.BaseRightTopYLineEdit.text()],
+                                [self.BaseRightBottomXLineEdit.text(), self.BaseRightBottomYLineEdit.text()],
+                                [self.BaseLeftBottomXLineEdit.text(), self.BaseLeftBottomYLineEdit.text()]])
+
+        #
+        M = cv2.getPerspectiveTransform(targetPoint, basePoint)
+
+        # Create output directory
+        resultPath = str(self.TargetPathLineEdit.text() + '\\result')
+        if not os.path.exists(resultPath):
+            os.makedirs(resultPath)
+
+        #
+        for file in glob.glob(str(self.TargetPathLineEdit.text() + '\\*.*')):
+            #
+            baseFilename = os.path.basename(file)
+            spliteFilename = os.path.splitext(baseFilename)
+
+            #
+            img = cv2.imread(file)
+            dst = cv2.warpPerspective(img, M, (self.targetcols, self.targetrows))
+            cv2.imwrite('{0}\\{1}_transformed{2}'.format(resultPath, spliteFilename[0], spliteFilename[1]), dst)
 
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)

@@ -186,10 +186,14 @@ class ImageTransformation(QtGui.QMainWindow):
         self.TargetPathLabel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.TargetPathLabel.setObjectName(_fromUtf8("TargetPathLabel"))
         self.horizontalLayout.addWidget(self.TargetPathLabel)
+
+
         self.TargetPathLineEdit = QtGui.QLineEdit(self.horizontalLayoutWidget)
         self.TargetPathLineEdit.setMaximumSize(QtCore.QSize(16777215, 20))
         self.TargetPathLineEdit.setObjectName(_fromUtf8("TargetPathLineEdit"))
         self.horizontalLayout.addWidget(self.TargetPathLineEdit)
+
+
         self.horizontalLayoutWidget_2 = QtGui.QWidget(self.centralwidget)
         self.horizontalLayoutWidget_2.setGeometry(QtCore.QRect(320, 400, 160, 51))
         self.horizontalLayoutWidget_2.setObjectName(_fromUtf8("horizontalLayoutWidget_2"))
@@ -242,10 +246,11 @@ class ImageTransformation(QtGui.QMainWindow):
         self.RunPushButton.setText(_translate("MainWindow", "Run", None))
         self.CancelPushButton.setText(_translate("MainWindow", "Cancel", None))
 
-        self.BaseSettingPushButton.clicked.connect(self.baseSettingPushButtononclick)
-        self.TargetSettingPushButton.clicked.connect(self.baseSettingPushButtononclick)
+        self.BaseSettingPushButton.clicked.connect(self.baseSettingPushButtonOnClick)
+        self.TargetSettingPushButton.clicked.connect(self.baseSettingPushButtonOnClick)
+        self.RunPushButton.clicked.connect(self.runButtonOnClick)
 
-    def baseSettingPushButtononclick(self):
+    def baseSettingPushButtonOnClick(self):
         # Show image setting dialog
         self.settingImageDialog = SettingFromImageDialog()
         self.settingImageDialog.show()
@@ -286,6 +291,10 @@ class ImageTransformation(QtGui.QMainWindow):
 
             self.TargetLeftBottomXLineEdit.setText(self.settingImageDialog.LeftBottomXLineEdit.text())
             self.TargetLeftBottomYLineEdit.setText(self.settingImageDialog.LeftBottomYLineEdit.text())
+
+    def runButtonOnClick(self):
+        file = QtGui.QFileDialog.getExistingDirectory(self, "Select Directory")
+        print file
 
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)

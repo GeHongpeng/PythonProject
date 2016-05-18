@@ -354,12 +354,15 @@ class ImageTransformation(QtGui.QMainWindow):
             self.processingWidget.progressBar.setValue(progressBarCounter)
 
         #
-        msg = QtGui.QMessageBox()
-        msg.setIcon(QtGui.QMessageBox.Information)
-        msg.setText("Processing Completed!")
-        msg.setWindowTitle("Information")
-        msg.setStandardButtons(QtGui.QMessageBox.Ok)
-        msg.exec_()
+        self.processingWidget.InformationLabel.setText("Processing Completed!")
+
+        # Messsage Box
+        #msg = QtGui.QMessageBox()
+        #msg.setIcon(QtGui.QMessageBox.Information)
+        #msg.setText("Processing Completed!")
+        #msg.setWindowTitle("Information")
+        #msg.setStandardButtons(QtGui.QMessageBox.Ok)
+        #msg.exec_()
 
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)

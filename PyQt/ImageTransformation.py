@@ -227,6 +227,9 @@ class ImageTransformation(QtGui.QMainWindow):
         self.show()
 
     def retranslateUi(self, MainWindow):
+        # 禁止拉伸窗口大小
+        MainWindow.setFixedSize(MainWindow.width(), MainWindow.height())
+        
         MainWindow.setWindowTitle(_translate("MainWindow", "Image Transformation", None))
         self.BaseGroupBox.setTitle(_translate("MainWindow", "Base image coordinates setting", None))
         self.BasePointsDirectionGroupBox.setTitle(_translate("MainWindow", "Points direction", None))

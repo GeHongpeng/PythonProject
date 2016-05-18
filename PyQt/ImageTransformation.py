@@ -7,6 +7,7 @@ import glob
 import numpy as np
 from PyQt4 import QtCore, QtGui
 from SettingFromImageDialog import SettingFromImageDialog
+from ProgressWidget import ProcessingWidget
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -31,6 +32,9 @@ class ImageTransformation(QtGui.QMainWindow):
         self.settingFlag = ''
         self.targetrows = 0
         self.targetcols = 0
+
+        #
+        self.processingWidget = None
 
         #
         self.setupUi(self)
@@ -223,13 +227,10 @@ class ImageTransformation(QtGui.QMainWindow):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        #
-        self.show()
-
     def retranslateUi(self, MainWindow):
         # 禁止拉伸窗口大小
         MainWindow.setFixedSize(MainWindow.width(), MainWindow.height())
-        
+
         MainWindow.setWindowTitle(_translate("MainWindow", "Image Transformation", None))
         self.BaseGroupBox.setTitle(_translate("MainWindow", "Base image coordinates setting", None))
         self.BasePointsDirectionGroupBox.setTitle(_translate("MainWindow", "Points direction", None))
@@ -310,7 +311,6 @@ class ImageTransformation(QtGui.QMainWindow):
         self.TargetPathLineEdit.setText(QtGui.QFileDialog.getExistingDirectory(self, "Select Directory"))
 
     def runButtonOnClick(self):
-
         #
         targetPoint = np.float32([[self.TargetLeftTopXLineEdit.text(), self.TargetLeftTopYLineEdit.text()],
                                   [self.TargetRightTopXLineEdit.text(), self.TargetRightTopYLineEdit.text()],
@@ -330,7 +330,17 @@ class ImageTransformation(QtGui.QMainWindow):
             os.makedirs(resultPath)
 
         #
-        for file in glob.glob(str(self.TargetPathLineEdit.text() + '\\*.*')):
+        files = glob.glob(str(self.TargetPathLineEdit.text() + '\\*.*'))
+
+        #
+        self.processingWidget = ProcessingWidget()
+        self.processingWidget.progressBar.setMaximum(len(files))
+        self.processingWidget.progressBar.setValue(0)
+        self.processingWidget.show()
+
+        #
+        progressBarCounter = 0
+        for file in files:
             #
             baseFilename = os.path.basename(file)
             spliteFilename = os.path.splitext(baseFilename)
@@ -340,7 +350,19 @@ class ImageTransformation(QtGui.QMainWindow):
             dst = cv2.warpPerspective(img, M, (self.targetcols, self.targetrows))
             cv2.imwrite('{0}\\{1}_transformed{2}'.format(resultPath, spliteFilename[0], spliteFilename[1]), dst)
 
+            progressBarCounter += 1
+            self.processingWidget.progressBar.setValue(progressBarCounter)
+
+        #
+        msg = QtGui.QMessageBox()
+        msg.setIcon(QtGui.QMessageBox.Information)
+        msg.setText("Processing Completed!")
+        msg.setWindowTitle("Information")
+        msg.setStandardButtons(QtGui.QMessageBox.Ok)
+        msg.exec_()
+
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
     ex = ImageTransformation()
+    ex.show()
     sys.exit(app.exec_())

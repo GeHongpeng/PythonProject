@@ -32,7 +32,7 @@ class ProcessingWidget(QtGui.QWidget):
         self.progressBar.setProperty("value", 0)
         self.progressBar.setObjectName(_fromUtf8("progressBar"))
         self.InformationLabel = QtGui.QLabel(Widget)
-        self.InformationLabel.setGeometry(QtCore.QRect(140, 70, 50, 12))
+        self.InformationLabel.setGeometry(QtCore.QRect(103, 67, 121, 16))
         self.InformationLabel.setObjectName(_fromUtf8("InformationLabel"))
 
         self.retranslateUi(Widget)
@@ -47,4 +47,3 @@ if __name__ == '__main__':
     ex = ProcessingWidget()
     ex.show()
     sys.exit(app.exec_())
-    

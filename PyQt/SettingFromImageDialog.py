@@ -144,9 +144,6 @@ class SettingFromImageDialog(QtGui.QDialog):
         self.retranslateUi(SettingDialog)
         QtCore.QMetaObject.connectSlotsByName(SettingDialog)
 
-        #
-        #self.show()
-
     def retranslateUi(self, SettingDialog):
         # 禁止拉伸窗口大小
         SettingDialog.setFixedSize(SettingDialog.width(), SettingDialog.height())
@@ -235,4 +232,5 @@ class SettingFromImageDialog(QtGui.QDialog):
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
     ex = SettingFromImageDialog()
+    ex.show()
     sys.exit(app.exec_())

@@ -28,15 +28,19 @@ class ProcessingWidget(QtGui.QWidget):
         Widget.setObjectName(_fromUtf8("Widget"))
         Widget.resize(344, 103)
         self.progressBar = QtGui.QProgressBar(Widget)
-        self.progressBar.setGeometry(QtCore.QRect(40, 40, 271, 23))
+        self.progressBar.setGeometry(QtCore.QRect(40, 30, 271, 23))
         self.progressBar.setProperty("value", 0)
         self.progressBar.setObjectName(_fromUtf8("progressBar"))
+        self.InformationLabel = QtGui.QLabel(Widget)
+        self.InformationLabel.setGeometry(QtCore.QRect(140, 70, 50, 12))
+        self.InformationLabel.setObjectName(_fromUtf8("InformationLabel"))
 
         self.retranslateUi(Widget)
         QtCore.QMetaObject.connectSlotsByName(Widget)
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(_translate("Widget", "Processing", None))
+        self.InformationLabel.setText(_translate("Form", "", None))
 
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)

@@ -5,9 +5,15 @@ set_time_limit(120);
 $start = microtime( TRUE );
 $batch_once = 100;
 $visible_format = true;//true=表示、false=非表示
-$csv_data_path = '/Applications/MAMP/htdocs/';
+
+//
+$csv_data_path = '/Applications/MAMP/htdocs/MyTest/csv/';
+if (!file_exists ($csv_data_path)){
+  mkdir ("$csv_data_path", 0777, true);
+}
+//
 $datetime = date("Y_m_d_His");//{YYYY_MM_DD_HHMMSS}.csv
-$csv_output_file = $csv_data_path . 'MyTest/csv/' . $datetime . '.csv';
+$csv_output_file = $csv_data_path . '/' . $datetime . '.csv';
 
 //
 $csv_format = array(
@@ -150,23 +156,6 @@ $csv_format = array(
   #BQ
   '[商品配送先_TEL_3]');
 
-//バリデーション処理
-function validate($entry_id, $result)
-{
-  $target_result = '';
-  switch($entry_id){
-    case 'A':
-        $target_result = $result;
-        break;
-    case 'B':
-        $target_result = $result;
-        break;
-    default:
-        $target_result = $result;
-  }
-  return $target_result;
-}
-
 //
 #mb_convert_variables('SJIS','UTF-8',$csv_format);
 $array[$document_id]["format"] = $csv_format;
@@ -198,8 +187,8 @@ try{
   foreach ($dbh->query($sql_target) as $row) {
     //処理対象リストにuriを追加
     $csv_list[$row['document_id']][] = $row['uri'];
-    //バリデーション処理を実施
-    $array[$row['document_id']][$row['uri']][$row['entry_id']] = validate($row['entry_id'], $row['result']);//mb_convert_encoding($row['result'], 'SJIS', 'UTF-8');
+    //resultを設定
+    $array[$row['document_id']][$row['uri']][$row['entry_id']] = $row['result'];//mb_convert_encoding($row['result'], 'SJIS', 'UTF-8');
   }
 
   //重複を取り除く

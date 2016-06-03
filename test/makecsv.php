@@ -3,7 +3,6 @@
 date_default_timezone_set('Asia/Tokyo');
 set_time_limit(120);
 $start = microtime( TRUE );
-$batch_once = 100;
 $visible_format = true;//true=表示、false=非表示
 
 //
@@ -205,9 +204,29 @@ try{
       }
     }
   }
-
   //csvファイルをクローズ
   fclose($fp);
+
+  //csv生成が完了したら、DBのstatusを更新
+  try {
+    $dbh->beginTransaction();
+    //
+    foreach ($csv_list as $csv_key => $csv_value){
+      foreach ($csv_value as $key => $value) {
+        $update_sql = 'UPDATE transaction_cropped SET status = 2 WHERE document_id = ' . $csv_key . ' AND ' . 'uri = \'' . $value . '\'';
+        echo $update_sql . "\n";
+        $dbh->query($update_sql);
+      }
+    }
+    $dbh->commit();
+
+    //NXへ通知
+    //code
+
+  } catch (Exception $e) {
+    $dbh->rollBack();
+    print('DB update Failed: ' . $e->getMessage());
+  }
 } catch (PDOException $e){
     print('Error:'.$e->getMessage());
     die();

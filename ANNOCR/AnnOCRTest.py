@@ -23,8 +23,8 @@ def insideXLine(r1, r2):
     x1, y1, w1, h1 = r1
     x2, y2, w2, h2 = r2
 
-    if ((x1 < x2) and (x1 + w1 > x2)) or ((x1 < x2 + w2) and (x1 + w1 > x2 + w2)) or ((x1 > x2) and (x1 + w1 < x2 + w2)):
-    #if ((x1 <= x2) and (x1+w1 >= x2)) or ((x1 <= x2+w2) and (x1+w1 >= x2+w2)) or ((x1 > x2) and (x1+w1 < x2+w2)):
+    #if ((x1 < x2) and (x1 + w1 > x2)) or ((x1 < x2 + w2) and (x1 + w1 > x2 + w2)) or ((x1 > x2) and (x1 + w1 < x2 + w2)):
+    if ((x1 <= x2) and (x1+w1 >= x2)) or ((x1 <= x2+w2) and (x1+w1 >= x2+w2)) or ((x1 > x2) and (x1+w1 < x2+w2)):
         return True
     else:
         return False
@@ -34,7 +34,7 @@ def insideXLine(r1, r2):
 """
 def wrap_character(rect):
     rect_x, rect_y, rect_w, rect_h = rect
-    padding = 5
+    padding = 1
     hcenter = rect_x + rect_w/2
     vcenter = rect_y + rect_h/2
 
@@ -50,7 +50,7 @@ def wrap_character(rect):
 """
 画像を読み込む
 """
-img = cv2.imread('./testdata/sample/sample5.jpg', 1)
+img = cv2.imread('./testdata/sample/sample8.jpg', 1)
 
 
 """
@@ -61,7 +61,7 @@ bw = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 # ガウシアンフィルタを用いて画像の平滑化を行う
 bw = cv2.GaussianBlur(bw, (3, 3), 0)
 # 二値化を行う
-ret, thbw = cv2.threshold(bw, 230, 255, cv2.THRESH_BINARY_INV)
+ret, thbw = cv2.threshold(bw, 215, 255, cv2.THRESH_BINARY_INV)
 # 収縮処理を行う
 thbw = cv2.erode(thbw, np.ones((2, 2), np.uint8), iterations=2)
 
@@ -78,6 +78,7 @@ cntrs = sorted(cntrs, key=cv2.contourArea, reverse=True)
 """
 不備な輪郭を除外する
 """
+counter = 1
 rectangles = []
 for c in cntrs:
     #
@@ -85,7 +86,7 @@ for c in cntrs:
     a = cv2.contourArea(c)
     b = (img.shape[0]-3) * (img.shape[1]-3)
     #
-    contour_area_Threshold = 50
+    contour_area_Threshold = 70
     is_inside = False
     #
     for q in rectangles:
@@ -100,15 +101,15 @@ for c in cntrs:
         if (not a == b) and (a > contour_area_Threshold):
             #
             target_r = r
-            x1, y1, w1, h1 = r
             for i, q in enumerate(rectangles):
-                if insideXLine(r, q):
+                if insideXLine(target_r, q):
                     #
                     target_x = 0
                     target_y = 0
                     target_w = 0
                     target_h = 0
                     #
+                    x1, y1, w1, h1 = target_r
                     x2, y2, w2, h2 = q
                     #
                     if x1 <= x2:
@@ -129,9 +130,10 @@ for c in cntrs:
                     else:
                         target_h = y2 + h2 - target_y
                     #
+
                     area1 = w1 * h1
                     area2 = w2 * h2
-                    if (area1 / area2 > 2) or (area2 / area1 > 2):
+                    if (area1 / area2 > 0.5) or (area2 / area1 > 0.5):
                         rectangles.pop(i)
                         target_r = target_x, target_y, target_w, target_h
 
@@ -151,15 +153,16 @@ for r in rectangles:
     x, y, w, h = r
     cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 1)
     #print x, y, w, h
+
     """
     wd_x, wd_y, wd_w, wd_h = wrap_character(r)
     if wd_x < 0:
         wd_x = 0
     if wd_y < 0:
         wd_y = 0
-
     cv2.rectangle(img, (wd_x, wd_y), (wd_x+wd_w, wd_y+wd_h), (0, 255, 0), 1)
     """
+
     #roi = thbw[wd_y:wd_y+wd_h, wd_x:wd_x+wd_w]
     #title = 'test' + str(counter)
     #cv2.imshow(title, roi)
@@ -167,7 +170,7 @@ for r in rectangles:
 
 
 cv2.imshow('test', img)
-cv2.imwrite('./testdata/sample/result.jpg', thbw)
+cv2.imwrite('./testdata/sample/result.jpg', img)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()

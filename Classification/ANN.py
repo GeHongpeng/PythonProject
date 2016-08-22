@@ -9,53 +9,31 @@ def float_formatter(x):
 
 def type_class(documentType):
     if documentType == 1:
-        return [0, 1, 0, 0, 0, 0, 0, 0]
+        return [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     elif documentType == 2:
-        return [0, 0, 1, 0, 0, 0, 0, 0]
+        return [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
     elif documentType == 3:
-        return [0, 0, 0, 1, 0, 0, 0, 0]
+        return [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
     elif documentType == 4:
-        return [0, 0, 0, 0, 1, 0, 0, 0]
+        return [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
     elif documentType == 5:
-        return [0, 0, 0, 0, 0, 1, 0, 0]
+        return [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
     elif documentType == 6:
-        return [0, 0, 0, 0, 0, 0, 1, 0]
+        return [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
     elif documentType == 7:
-        return [0, 0, 0, 0, 0, 0, 0, 1]
+        return [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
     elif documentType == 8:
-        return [0, 0, 0, 0, 0, 0, 0, 0]
+        return [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0]
     elif documentType == 9:
-        return [0, 0, 0, 0, 0, 0, 0, 0]
+        return [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0]
     elif documentType == 10:
-        return [0, 0, 0, 0, 0, 0, 0, 0]
-    """
-    if documentType == 1:
-        return [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    elif documentType == 2:
-        return [0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
-    elif documentType == 3:
-        return [0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
-    elif documentType == 4:
-        return [0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
-    elif documentType == 5:
-        return [0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
-    elif documentType == 6:
-        return [0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
-    elif documentType == 7:
-        return [0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
-    elif documentType == 8:
-        return [0, 0, 0, 0, 0, 0, 0, 1, 0, 0]
-    elif documentType == 9:
-        return [0, 0, 0, 0, 0, 0, 0, 0, 1, 0]
-    elif documentType == 10:
-        return [0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
-    """
+        return [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
 
 
 def calc_resp(respArray):
     #
     resultList = []
-    resultArray = np.array([]).reshape(0, 8)
+    resultArray = np.array([]).reshape(0, 11)
 
     #
     for itemIndex in range(len(respArray)):
@@ -75,12 +53,14 @@ def calc_resp(respArray):
 
         #
         if maxValue1 >= 1 and maxValue2 >= 1:
-            resultList.append(np.zeros((1, 8)))
+            resultList.append(np.zeros((1, 11)))
             continue
         #
+        """
         if maxValue1 < 0.8:
-            resultList.append(np.zeros((1, 8)))
+            resultList.append(np.zeros((1, 11)))
             continue
+        """
 
         #
         resultList.append(type_class(index1))
@@ -93,12 +73,12 @@ def calc_resp(respArray):
     return np.int32(resultArray)
 
 # Load the train data
-data = np.loadtxt('./hog/hog_train.csv', dtype='float32', delimiter=',')
+data = np.loadtxt('./2_hog_train/hog_train.csv', dtype='float32', delimiter=',')
 # split data to responses and trainData
 responses, trainData = np.hsplit(data, [1])
 # Create arrays for train data and response
 train_array = np.float32(np.array([]).reshape(0, 64))
-train_resp_array = np.float32(np.array([]).reshape(0, 8))
+train_resp_array = np.float32(np.array([]).reshape(0, 11))
 # Create train data
 TRAIN_RECORDS = len(trainData)
 for x in range(0, TRAIN_RECORDS):
@@ -110,13 +90,13 @@ train_resp = train_resp_array
 
 
 # Load the test data
-data = np.loadtxt('./hog/hog_test.csv', dtype='float32', delimiter=',')
+data = np.loadtxt('./3_hog_test/hog_test.csv', dtype='float32', delimiter=',')
 # split data to test_labels and testData
 testLabels, testData = np.hsplit(data, [1])
 
 # Create arrays for test data and label
 test_array = np.float32(np.array([]).reshape(0, 64))
-test_resp_array = np.float32(np.array([]).reshape(0, 8))
+test_resp_array = np.float32(np.array([]).reshape(0, 11))
 # Create test data
 TEST_RECORDS = len(testData)
 for x in range(0, TEST_RECORDS):
@@ -128,7 +108,7 @@ test_resp = test_resp_array
 
 
 # Create MLP
-layer_sizes = np.int32([64, 35, 8])
+layer_sizes = np.int32([64, 35, 11])
 animal_net = cv2.ANN_MLP()
 animal_net.create(layer_sizes)
 # Set criteria and parameters
@@ -168,5 +148,5 @@ num_correct = np.sum(true_resp == prediction)
 print 'Correct number: %d' % num_correct
 
 test_rate = np.mean(prediction == true_resp)
-print 'Test rate: %f' % (test_rate * 100)
+print 'Test rate: %.2f%%' % (test_rate * 100)
 print "------------------------------------"

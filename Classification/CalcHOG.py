@@ -22,8 +22,8 @@ def hog(img):
     bins = np.int32(bin_n * ang / (2 * np.pi))
 
     # Divide this image to four sub-squares.
-    bin_cells = bins[:10, :10], bins[10:, :10], bins[:10, 10:], bins[10:, 10:]
-    mag_cells = mag[:10, :10], mag[10:, :10], mag[:10, 10:], mag[10:, 10:]
+    bin_cells = bins[:827, :1170], bins[827:, :1170], bins[:827, 1170:], bins[827:, 1170:]
+    mag_cells = mag[:827, :1170], mag[827:, :1170], mag[:827, 1170:], mag[827:, 1170:]
 
     #
     hists = [np.bincount(b.ravel(), m.ravel(), bin_n) for b, m in zip(bin_cells, mag_cells)]
@@ -39,7 +39,7 @@ csvWriter = csv.writer(fw)
 
 # 特徴量を算出し、csvファイルへ保存
 dataArray = np.float32(np.array([]).reshape(0, 65))
-imageFiles = glob.glob('./data/*.jpg')
+imageFiles = glob.glob('./data2/*.jpg')
 for imageFile in imageFiles:
     # ファイル名（種別）を取得
     fileNameWithoutExtension = os.path.splitext(os.path.basename(imageFile))[0]

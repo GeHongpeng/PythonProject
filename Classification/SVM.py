@@ -29,7 +29,8 @@ svm.train(trainData, responses, params=svm_params)
 #svm.save('./data/svm_data.dat')
 
 # predicting
-result = np.int32(svm.predict_all(testData))
+#result = np.int32(svm.predict_all(testData))
+result = svm.predict_all(testData)
 print result
 
 """

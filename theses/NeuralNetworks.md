@@ -17,3 +17,6 @@
 ### [Focal Loss for Dense Object Detection](https://arxiv.org/pdf/1708.02002.pdf)
 ### [Flexible Rectified Linear Units for Improving Convolutional Neural Networks](https://arxiv.org/pdf/1706.08098.pdf)
 
+### [The One Hundred Layers Tiramisu:Fully Convolutional DenseNets for Semantic Segmentation](https://arxiv.org/pdf/1611.09326.pdf)
+
+

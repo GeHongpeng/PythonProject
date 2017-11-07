@@ -9,3 +9,11 @@
 ### [DON’T DECAY THE LEARNING RATE, INCREASE THE BATCH SIZE](https://arxiv.org/pdf/1711.00489.pdf)
 ### [A systematic study of the class imbalance problem in convolutional neural networks](https://arxiv.org/pdf/1710.05381.pdf)
 ### [Logistic Regression in Rare Events Data](https://gking.harvard.edu/files/0s.pdf)
+
+### [DSSD : Deconvolutional Single Shot Detector](https://arxiv.org/pdf/1701.06659.pdf)
+
+### [AdaDNNs: Adaptive Ensemble of Deep Neural Networks　for Scene Text Recognition](https://arxiv.org/pdf/1710.03425v1.pdf)
+
+### [Focal Loss for Dense Object Detection](https://arxiv.org/pdf/1708.02002.pdf)
+### [Flexible Rectified Linear Units for Improving Convolutional Neural Networks](https://arxiv.org/pdf/1706.08098.pdf)
+

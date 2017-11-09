@@ -19,4 +19,6 @@
 
 ### [The One Hundred Layers Tiramisu:Fully Convolutional DenseNets for Semantic Segmentation](https://arxiv.org/pdf/1611.09326.pdf)
 
+## 2017/11/09
 ### [Fully-Parallel Text Generation for Neural Machine Translation](https://einstein.ai/research/non-autoregressive-neural-machine-translation)
+### [Dynamic Routing Between Capsules](https://arxiv.org/pdf/1710.09829.pdf)

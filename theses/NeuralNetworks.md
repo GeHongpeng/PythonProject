@@ -19,4 +19,4 @@
 
 ### [The One Hundred Layers Tiramisu:Fully Convolutional DenseNets for Semantic Segmentation](https://arxiv.org/pdf/1611.09326.pdf)
 
-
+### [Fully-Parallel Text Generation for Neural Machine Translation](https://einstein.ai/research/non-autoregressive-neural-machine-translation)

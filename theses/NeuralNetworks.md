@@ -22,3 +22,5 @@
 * [Fully-Parallel Text Generation for Neural Machine Translation](https://einstein.ai/research/non-autoregressive-neural-machine-translation)
 * [Dynamic Routing Between Capsules](https://arxiv.org/pdf/1710.09829.pdf)
 * [A generative vision model that trains with high data efficiency and breaks text-based CAPTCHAs](http://science.sciencemag.org/content/early/2017/10/25/science.aag2612/tab-pdf)
+* [Variational Walkback: Learning a Transition
+Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)

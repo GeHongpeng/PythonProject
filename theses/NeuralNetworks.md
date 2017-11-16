@@ -24,3 +24,6 @@
 * [A generative vision model that trains with high data efficiency and breaks text-based CAPTCHAs](http://science.sciencemag.org/content/early/2017/10/25/science.aag2612/tab-pdf)
 * [Variational Walkback: Learning a Transition
 Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
+
+## 2017/11/16
+* [An End-to-End Trainable Neural Network for Image-based Sequence Recognition and Its Application to Scene Text Recognition](https://arxiv.org/pdf/1507.05717.pdf) []

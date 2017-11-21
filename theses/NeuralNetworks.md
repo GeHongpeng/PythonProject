@@ -30,3 +30,6 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 
 ## 2017/11/17
 * [Deep Speech 2: End-to-End Speech Recognition in English and Mandarin](https://arxiv.org/pdf/1512.02595.pdf)
+
+## 2017/11/21
+* [Robust Scene Text Recognition with Automatic Rectification](https://arxiv.org/pdf/1603.03915.pdf)

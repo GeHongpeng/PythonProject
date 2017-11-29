@@ -37,3 +37,4 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 
 ## 2017/11/29
 * [Population Based Training of Neural Networks](https://arxiv.org/pdf/1711.09846.pdf)
+(https://deepmind.com/blog/population-based-training-neural-networks/)

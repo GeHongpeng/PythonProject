@@ -45,3 +45,8 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 
 ## 2017/11/30
 * [CondenseNet: An Efficient DenseNet using Learned Group Convolutions](https://arxiv.org/pdf/1711.09224.pdf)
+
+## 2018/02/07
+* [Accurate Single Stage Detector Using Recurrent Rolling Convolution](https://arxiv.org/pdf/1704.05776.pdf)
+* [TextBoxes: A Fast Text Detector with a Single Deep Neural Network](https://arxiv.org/pdf/1611.06779.pdf)
+* [TextBoxes++: A Single-Shot Oriented Scene Text Detector](https://arxiv.org/pdf/1801.02765.pdf)

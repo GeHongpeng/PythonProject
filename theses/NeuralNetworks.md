@@ -53,3 +53,7 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 
 ## 2018/02/09
 * [Detecting Text in Natural Image with Connectionist Text Proposal Network](https://arxiv.org/pdf/1609.03605.pdf)
+
+## 2018/03/01
+* [Mask R-CNN](https://arxiv.org/pdf/1703.06870.pdf)
+https://arxiv.org/pdf/1703.06870.pdf

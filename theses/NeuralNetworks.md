@@ -56,4 +56,5 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 
 ## 2018/03/01
 * [Mask R-CNN](https://arxiv.org/pdf/1703.06870.pdf)
-https://arxiv.org/pdf/1703.06870.pdf
+* [Feature Pyramid Networks for Object Detection](https://arxiv.org/pdf/1612.03144.pdf)
+

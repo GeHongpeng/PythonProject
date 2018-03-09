@@ -58,3 +58,7 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 * [Mask R-CNN](https://arxiv.org/pdf/1703.06870.pdf)
 * [Feature Pyramid Networks for Object Detection](https://arxiv.org/pdf/1612.03144.pdf)
 * [Multi-Oriented Scene Text Detection via Corner Localization and Region Segmentation](https://arxiv.org/pdf/1802.08948.pdf)
+
+## 2018/03/09
+* [Focal Loss Dense Detector for Vehicle Surveillance](https://arxiv.org/pdf/1803.01114.pdf)
+* [The History Began from AlexNet: A Comprehensive Survey on Deep Learning Approaches ](https://arxiv.org/pdf/1803.01164.pdf)

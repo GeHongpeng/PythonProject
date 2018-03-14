@@ -62,3 +62,6 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 ## 2018/03/09
 * [Focal Loss Dense Detector for Vehicle Surveillance](https://arxiv.org/pdf/1803.01114.pdf)
 * [The History Began from AlexNet: A Comprehensive Survey on Deep Learning Approaches ](https://arxiv.org/pdf/1803.01164.pdf)
+
+## 2018/03/14
+* [Joint Training for Neural Machine Translation Modelswith Monolingual Data](https://arxiv.org/pdf/1803.00353.pdf)

@@ -66,3 +66,8 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 
 ## 2018/03/14
 * [Joint Training for Neural Machine Translation Modelswith Monolingual Data](https://arxiv.org/pdf/1803.00353.pdf)
+
+## 2018/03/28
+* [Accurate, Large Minibatch SGD:Training ImageNet in 1 Hour](https://arxiv.org/pdf/1706.02677.pdf)
+* [Understanding deep learning requires rethinking generalization](https://arxiv.org/pdf/1611.03530.pdf)
+* [A Bayesian Perspective on Generalization and Stochastic Gradient Descent](https://arxiv.org/pdf/1710.06451.pdf)

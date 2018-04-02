@@ -76,3 +76,6 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 * [Single-Shot Bidirectional Pyramid Networks for High-Quality Object Detection](https://arxiv.org/pdf/1803.08208v1.pdf)
 * [Multi-Modal Data Augmentation for End-to-end ASR](https://arxiv.org/pdf/1803.10299v2.pdf)
 * [Group Normalization](https://arxiv.org/pdf/1803.08494v1.pdf)
+* [AON: Towards Arbitrarily-Oriented Text Recognition](https://arxiv.org/pdf/1711.04226v2.pdf)
+* [SEARNN:TRAINING RNNS WITH GLOBAL-LOCAL LOSSES](https://arxiv.org/pdf/1706.04499v3.pdf)
+

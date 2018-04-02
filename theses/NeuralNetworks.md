@@ -71,3 +71,8 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 * [Accurate, Large Minibatch SGD:Training ImageNet in 1 Hour](https://arxiv.org/pdf/1706.02677.pdf)
 * [Understanding deep learning requires rethinking generalization](https://arxiv.org/pdf/1611.03530.pdf)
 * [A Bayesian Perspective on Generalization and Stochastic Gradient Descent](https://arxiv.org/pdf/1710.06451.pdf)
+
+## 2018/04/02
+* [Single-Shot Bidirectional Pyramid Networks for High-Quality Object Detection](https://arxiv.org/pdf/1803.08208v1.pdf)
+* [Multi-Modal Data Augmentation for End-to-end ASR](https://arxiv.org/pdf/1803.10299v2.pdf)
+* [Group Normalization](https://arxiv.org/pdf/1803.08494v1.pdf)

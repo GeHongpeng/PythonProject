@@ -78,4 +78,6 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 * [Group Normalization](https://arxiv.org/pdf/1803.08494v1.pdf)
 * [AON: Towards Arbitrarily-Oriented Text Recognition](https://arxiv.org/pdf/1711.04226v2.pdf)
 * [SEARNN:TRAINING RNNS WITH GLOBAL-LOCAL LOSSES](https://arxiv.org/pdf/1706.04499v3.pdf)
+* [YOLOv3: An Incremental Improvement](https://pjreddie.com/media/files/papers/YOLOv3.pdf)
+
 

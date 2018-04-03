@@ -82,5 +82,8 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 
 ## 2018/04/03
 * [Multi-scale Location-aware Kernel Representation for Object Detection](https://arxiv.org/pdf/1804.00428v1.pdf)
+* [LSTD: A Low-Shot Transfer Detector for Object Detection](https://arxiv.org/pdf/1803.01529v1.pdf)
+* [Deep Regionlets for Object Detection](https://arxiv.org/pdf/1712.02408v2.pdf)
+* [Speeding-up Object Detection Training for Robotics with FALKON](https://arxiv.org/pdf/1803.08740v1.pdf)
 
 

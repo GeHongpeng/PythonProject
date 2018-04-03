@@ -80,4 +80,7 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 * [SEARNN:TRAINING RNNS WITH GLOBAL-LOCAL LOSSES](https://arxiv.org/pdf/1706.04499v3.pdf)
 * [YOLOv3: An Incremental Improvement](https://pjreddie.com/media/files/papers/YOLOv3.pdf)
 
+## 2018/04/03
+* [Multi-scale Location-aware Kernel Representation for Object Detection](https://arxiv.org/pdf/1804.00428v1.pdf)
+
 

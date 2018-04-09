@@ -86,4 +86,6 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 * [Deep Regionlets for Object Detection](https://arxiv.org/pdf/1712.02408v2.pdf)
 * [Speeding-up Object Detection Training for Robotics with FALKON](https://arxiv.org/pdf/1803.08740v1.pdf)
 
-
+## 2018/04/05
+* [Squeeze-and-Excitation Networks](https://arxiv.org/pdf/1709.01507v2.pdf)
+* [Iris Recognition After Death](https://arxiv.org/pdf/1804.01962v1.pdf)

@@ -89,3 +89,10 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 ## 2018/04/05
 * [Squeeze-and-Excitation Networks](https://arxiv.org/pdf/1709.01507v2.pdf)
 * [Iris Recognition After Death](https://arxiv.org/pdf/1804.01962v1.pdf)
+
+## 2018/04/12
+* [Computation-Performance Optimization of Convolutional Neural Networks with Redundant Kernel Removal](https://arxiv.org/pdf/1705.10748v3.pdf)
+* [A Fully Progressive Approach to Single-Image Super-Resolution](https://arxiv.org/pdf/1804.02900v2.pdf)
+* [A real-time and unsupervised face Re-Identification system for Human-Robot Interaction](https://arxiv.org/pdf/1804.03547v1.pdf)
+* [Scalable Variational Inference for Dynamical Systems](https://arxiv.org/pdf/1705.07079v2.pdf)
+* [Single-Shot Object Detection with Enriched Semantics](https://arxiv.org/pdf/1712.00433v2.pdf)

@@ -99,3 +99,5 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 
 ## 2018/04/12
 * [MegDet: A Large Mini-Batch Object Detector](https://arxiv.org/pdf/1711.07240v4.pdf)
+* [SoccerNet: A Scalable Dataset for Action Spotting in Soccer Videos](https://arxiv.org/pdf/1804.04527.pdf)
+

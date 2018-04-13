@@ -96,3 +96,6 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 * [A real-time and unsupervised face Re-Identification system for Human-Robot Interaction](https://arxiv.org/pdf/1804.03547v1.pdf)
 * [Scalable Variational Inference for Dynamical Systems](https://arxiv.org/pdf/1705.07079v2.pdf)
 * [Single-Shot Object Detection with Enriched Semantics](https://arxiv.org/pdf/1712.00433v2.pdf)
+
+## 2018/04/12
+* [MegDet: A Large Mini-Batch Object Detector](https://arxiv.org/pdf/1711.07240v4.pdf)

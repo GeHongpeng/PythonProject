@@ -115,6 +115,6 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 
 ## 2018/04/20
 * [Pelee: A Real-Time Object Detection System on Mobile Devices](https://arxiv.org/pdf/1804.06882.pdf)
-* [Deep Face Recognition: A Survey](https://arxiv.org/pdf/1804.06913.pdf)
+* [Deep Face Recognition: A Survey](https://arxiv.org/pdf/1804.06655.pdf)
 * [Attention-Gated Networks for Improving Ultrasound Scan Plane Detection](https://arxiv.org/pdf/1804.05338.pdf)
 * [Video2Shop: Exactly Matching Clothes in Videos to Online Shopping Images](https://arxiv.org/pdf/1804.05287.pdf)

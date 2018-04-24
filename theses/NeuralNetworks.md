@@ -118,3 +118,10 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 * [Deep Face Recognition: A Survey](https://arxiv.org/pdf/1804.06655.pdf)
 * [Attention-Gated Networks for Improving Ultrasound Scan Plane Detection](https://arxiv.org/pdf/1804.05338.pdf)
 * [Video2Shop: Exactly Matching Clothes in Videos to Online Shopping Images](https://arxiv.org/pdf/1804.05287.pdf)
+
+## 2018/04/24
+* [Rethinking the Faster R-CNN Architecture for Temporal Action Localization](https://arxiv.org/pdf/1804.07667.pdf)
+* [MobileFaceNets: Efficient CNNs for Accurate Real-time Face Verification on Mobile Devices](https://arxiv.org/pdf/1804.07573.pdf)
+* [Survey of Face Detection on Low-quality Images](https://arxiv.org/pdf/1804.07362.pdf)
+* [Revisiting Small Batch Training for Deep Neural Networks](https://arxiv.org/pdf/1804.07612.pdf)
+* [To Find Where You Talk: Temporal Sentence Localization in Video with Attention Based Location Regression](https://arxiv.org/pdf/1804.07014.pdf)

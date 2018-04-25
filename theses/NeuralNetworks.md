@@ -128,3 +128,6 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 * [Object Detection for Comics using Manga109 Annotations](https://arxiv.org/pdf/1803.08670v2.pdf)
 * [Derivate-based Component-Trees for Multi-Channel Image Segmentation](https://arxiv.org/pdf/1705.01906v2.pdf)
 * [Rethinking Atrous Convolution for Semantic Image Segmentation](https://arxiv.org/pdf/1706.05587.pdf)
+
+## 2018/04/24
+* [A Dynamic Boosted Ensemble Learning Method Based on Random Forest](https://arxiv.org/pdf/1804.07270v3.pdf)

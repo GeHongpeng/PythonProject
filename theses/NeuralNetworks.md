@@ -131,3 +131,14 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 
 ## 2018/04/25
 * [A Dynamic Boosted Ensemble Learning Method Based on Random Forest](https://arxiv.org/pdf/1804.07270v3.pdf)
+* [An Anchor-Free Region Proposal Network for Faster R-CNN based Text Detection Approaches](https://arxiv.org/pdf/1804.09003.pdf)
+* [FaceShop: Deep Sketch-based Face Image Editing](https://arxiv.org/pdf/1804.08972.pdf)
+* [Face Recognition: Primates in the Wild](https://arxiv.org/pdf/1804.08790.pdf)
+* [Guided Attention for Large Scale Scene Text Verification](https://arxiv.org/pdf/1804.08588.pdf)
+* [Decorrelated Batch Normalization](https://arxiv.org/pdf/1804.08450.pdf)
+* [Convolutional capsule network for classification of breast cancer histology images](https://arxiv.org/pdf/1804.08376.pdf)
+* [Memory Matching Networks for One-Shot Image Recognition](https://arxiv.org/pdf/1804.08281.pdf)
+* [Anchor-based Nearest Class Mean Loss for Convolutional Neural Networks](https://arxiv.org/pdf/1804.08087.pdf)
+
+
+

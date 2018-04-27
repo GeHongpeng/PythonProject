@@ -140,3 +140,7 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 * [Memory Matching Networks for One-Shot Image Recognition](https://arxiv.org/pdf/1804.08281.pdf)
 * [Anchor-based Nearest Class Mean Loss for Convolutional Neural Networks](https://arxiv.org/pdf/1804.08087.pdf)
 * [DenseBox: Unifying Landmark Localization with End to End Object Detection](https://arxiv.org/pdf/1509.04874.pdf)
+
+## 2018/04/27
+* [Capsule networks for low-data transfer learning](https://arxiv.org/pdf/1804.10172.pdf)
+* [Progressive Neural Networks for Image Classification](https://arxiv.org/pdf/1804.09803.pdf)

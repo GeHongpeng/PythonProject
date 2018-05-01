@@ -144,3 +144,12 @@ Operator as a Stochastic Recurrent Net](https://arxiv.org/pdf/1711.02282.pdf)
 ## 2018/04/27
 * [Capsule networks for low-data transfer learning](https://arxiv.org/pdf/1804.10172.pdf)
 * [Progressive Neural Networks for Image Classification](https://arxiv.org/pdf/1804.09803.pdf)
+
+## 2018/05/01
+* [Vision Meets Drones: A Challenge](https://arxiv.org/pdf/1804.07437v2.pdf)
+* [MobileNetV2: Inverted Residuals and Linear Bottlenecks](https://arxiv.org/pdf/1801.04381v3.pdf)
+* [Crossbar-Net: A Novel Convolutional Network for Kidney Tumor Segmentation in CT Images](https://arxiv.org/pdf/1804.10484.pdf)
+* [Localized Traffic Sign Detection with Multi-scale Deconvolution Networks](https://arxiv.org/pdf/1804.10428.pdf)
+* [dhSegment: A generic deep-learning approach for document segmentation](https://arxiv.org/pdf/1804.10371.pdf)
+* [Stacked U-Nets: A No-Frills Approach to Natural Image Segmentation](https://arxiv.org/pdf/1804.10343.pdf)
+* [Latent Fingerprint Recognition: Role of Texture Template](https://arxiv.org/pdf/1804.10337.pdf)
